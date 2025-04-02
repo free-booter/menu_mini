@@ -74,7 +74,7 @@
     "@types/webpack-env": "^1.13.6",
     "@typescript-eslint/eslint-plugin": "^6.2.0",
     "@typescript-eslint/parser": "^6.2.0",
-    "@unocss/webpack": "66.1.0-beta.8",
+    "@unocss/webpack": "^0.58.0",
     "babel-preset-taro": "3.6.35",
     "eslint": "^8.12.0",
     "eslint-config-taro": "3.6.35",
@@ -89,6 +89,8 @@
     "ts-node": "^10.9.1",
     "tsconfig-paths-webpack-plugin": "^4.1.0",
     "typescript": "^5.1.0",
+    "unocss": "^0.58.0",
+    "unocss-preset-weapp": "^0.58.0",
     "webpack": "5.78.0"
   }
 }

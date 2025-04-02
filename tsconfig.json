@@ -20,11 +20,20 @@
     "typeRoots": [
       "node_modules/@types"
     ],
+    "types": [
+      "unocss/vite"
+    ],
     "paths": {
       // TS5090 leading './'
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     }
   },
-  "include": ["./src", "./types", "./config"],
+  "include": [
+    "./src",
+    "./types",
+    "./config"
+  ],
   "compileOnSave": false
 }
