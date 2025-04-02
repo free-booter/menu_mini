@@ -1,8 +1,30 @@
 /* 颜色 */
-
-$color-primary: "#ffa115";
+$color-primary: #ffa115;
+$color-complementary: #1575ff; // 对比色
+$color-price: #fa5232; // 价格色
 
 // 文字颜色
-$color-text-primary: "#1D1D1D";
-$color-text-secondary: "#8D9095";
-$color-text-placeholder: "#bfbfbf";
+$color-text-primary: #1d1d1d;
+$color-text-secondary: #8d9095;
+$color-text-placeholder: #919191;
+
+// 背景颜色
+$color-other-background: #bfbfbf;
+$color-background: #eeeef0;
+$color-background-light: rgba(255, 161, 21, 0.05);
+
+// 边框颜色
+$color-border: #e5e5e5;
+
+/* 字体大小 */
+$font-size-xsmall: 24px;
+$font-size-small: 28px;
+$font-size-medium: 32px;
+$font-size-large: 36px;
+$font-size-xlarge: 40px;
+
+// 阴影
+$shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-light: 0 2px 4px rgba(0, 0, 0, 0.05);
+$shadow-heavy: 0 4px 8px rgba(0, 0, 0, 0.1);
+$shadow-heavy-light: 0 4px 8px rgba(0, 0, 0, 0.05);

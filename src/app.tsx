@@ -1,8 +1,10 @@
 import { PropsWithChildren } from 'react'
-import { useLaunch } from '@tarojs/taro'
+import { Config, useLaunch } from '@tarojs/taro'
+import { ConfigProvider } from '@nutui/nutui-react-taro'
 import '@nutui/nutui-react-taro/dist/style.css';
-import './app.scss'
 import 'uno.css'
+import './assets/styles/common.scss'
+import './app.scss'
 
 function App({ children }: PropsWithChildren<any>) {
 
@@ -11,7 +13,11 @@ function App({ children }: PropsWithChildren<any>) {
   })
 
   // children 是将要会渲染的页面
-  return children
+  return (
+     <>
+      {children}
+     </>
+  )
 }
 
 export default App

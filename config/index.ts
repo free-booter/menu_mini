@@ -4,6 +4,7 @@ import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
 import UnoCSS from 'unocss/webpack'
 import devConfig from "./dev";
 import prodConfig from "./prod";
+import path from "path";
 
 // https://taro-docs.jd.com/docs/next/config#defineconfig-辅助函数
 export default defineConfig(async (merge, { command, mode }) => {
@@ -105,6 +106,14 @@ export default defineConfig(async (merge, { command, mode }) => {
           enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
         },
       },
+    },
+    // 配置全局scss
+    sass: {
+      resource: [
+        path.resolve(__dirname, '..', 'src/assets/styles/variables.scss')
+      ],
+      // 默认京东 APP 10.0主题 > @import "@nutui/nutui-react-taro/dist/styles/variables.scss";
+      data: `@import "@nutui/nutui-react-taro/dist/styles/variables.scss"; @import "src/assets/styles/variables.scss";`
     },
   };
   if (process.env.NODE_ENV === "development") {

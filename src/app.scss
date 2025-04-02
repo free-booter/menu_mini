@@ -1,0 +1,31 @@
+.nut-searchbar {
+  background-color: #fff;
+  .nut-searchbar-icon {
+    color: $color-text-placeholder;
+  }
+  .input-placeholder {
+    color: $color-text-placeholder;
+  }
+}
+
+.app-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  background: #fff;
+  z-index: 1000;
+  .nut-searchbar {
+    width: 70%;
+    height: 100%;
+    padding: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-sizing: border-box;
+    .nut-searchbar-content {
+      background: $color-background;
+    }
+  }
+}
