@@ -92,7 +92,7 @@ importers:
         version: 0.1.1(wwitisbzdrcdzgvcbtvawm5zgu)
       '@tarojs/webpack5-runner':
         specifier: 3.6.35
-        version: 3.6.35(@babel/core@7.26.10)(@swc/core@1.3.96(@swc/helpers@0.5.15))(@swc/helpers@0.5.15)(@tarojs/components@3.6.35(@tarojs/helper@3.6.35(@swc/helpers@0.5.15))(@tarojs/runtime@3.6.35(@tarojs/shared@3.6.35))(@tarojs/shared@3.6.35)(@types/react@18.3.20)(postcss@8.5.3)(react@18.3.1))(@tarojs/runtime@3.6.35(@tarojs/shared@3.6.35))(@tarojs/shared@3.6.35)(@tarojs/taro@3.6.35(@tarojs/helper@3.6.35(@swc/helpers@0.5.15))(@tarojs/runtime@3.6.35(@tarojs/shared@3.6.35))(@types/react@18.3.20)(postcss@8.5.3))(@types/react@18.3.20)(@vue/compiler-sfc@3.5.13)(postcss@8.5.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.2)(webpack@5.78.0(@swc/core@1.3.96(@swc/helpers@0.5.15)))
+        version: 3.6.35(@babel/core@7.26.10)(@swc/core@1.3.96(@swc/helpers@0.5.15))(@swc/helpers@0.5.15)(@tarojs/components@3.6.35(@tarojs/helper@3.6.35(@swc/helpers@0.5.15))(@tarojs/runtime@3.6.35(@tarojs/shared@3.6.35))(@tarojs/shared@3.6.35)(@types/react@18.3.20)(postcss@8.5.3)(react@18.3.1))(@tarojs/runtime@3.6.35(@tarojs/shared@3.6.35))(@tarojs/shared@3.6.35)(@tarojs/taro@3.6.35(@tarojs/helper@3.6.35(@swc/helpers@0.5.15))(@tarojs/runtime@3.6.35(@tarojs/shared@3.6.35))(@types/react@18.3.20)(postcss@8.5.3))(@types/react@18.3.20)(@vue/compiler-sfc@3.5.13)(postcss@8.5.3)(prettier@2.8.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.2)(webpack@5.78.0(@swc/core@1.3.96(@swc/helpers@0.5.15)))
       '@types/jest':
         specifier: ^29.3.1
         version: 29.5.14
@@ -120,12 +120,18 @@ importers:
       eslint:
         specifier: ^8.12.0
         version: 8.57.1
+      eslint-config-prettier:
+        specifier: ^10.1.1
+        version: 10.1.1(eslint@8.57.1)
       eslint-config-taro:
         specifier: 3.6.35
         version: 3.6.35(@babel/core@7.26.10)(eslint@8.57.1)(typescript@5.8.2)
       eslint-plugin-import:
         specifier: ^2.12.0
         version: 2.31.0(@typescript-eslint/parser@6.21.0(eslint@8.57.1)(typescript@5.8.2))(eslint@8.57.1)
+      eslint-plugin-prettier:
+        specifier: ^5.2.6
+        version: 5.2.6(@types/eslint@9.6.1)(eslint-config-prettier@10.1.1(eslint@8.57.1))(eslint@8.57.1)(prettier@2.8.8)
       eslint-plugin-react:
         specifier: ^7.8.2
         version: 7.37.4(eslint@8.57.1)
@@ -1419,6 +1425,10 @@ packages:
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
+
+  '@pkgr/core@0.2.0':
+    resolution: {integrity: sha512-vsJDAkYR6qCPu+ioGScGiMYR7LvZYIXh/dlQeviqoTWNCVfKTLYD/LkNWH4Mxsv2a5vpIRc77FN5DnmK1eBggQ==}
+    engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
 
   '@pmmmwh/react-refresh-webpack-plugin@0.5.16':
     resolution: {integrity: sha512-kLQc9xz6QIqd2oIYyXRUiAp79kGpFBm3fEM9ahfG1HI0WI5gdZ2OVHWdmZYnwODt7ISck+QuQ6sBPrtvUBML7Q==}
@@ -4183,6 +4193,12 @@ packages:
     engines: {node: '>=6.0'}
     hasBin: true
 
+  eslint-config-prettier@10.1.1:
+    resolution: {integrity: sha512-4EQQr6wXwS+ZJSzaR5ZCrYgLxqvUjdXctaEtBqHcbkW944B1NQyO4qpdHQbXBONfwxXdkAY81HH4+LUfrg+zPw==}
+    hasBin: true
+    peerDependencies:
+      eslint: '>=7.0.0'
+
   eslint-config-taro@3.6.35:
     resolution: {integrity: sha512-90fsuc9zofEW/YPriadQQ7rmYyJIknjKgoFXBan/IR1WRVsei/sJTXadUdv3GxTx7XGLyHTO4a3OiQWp75oujg==}
     peerDependencies:
@@ -4220,6 +4236,20 @@ packages:
       eslint: ^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8 || ^9
     peerDependenciesMeta:
       '@typescript-eslint/parser':
+        optional: true
+
+  eslint-plugin-prettier@5.2.6:
+    resolution: {integrity: sha512-mUcf7QG2Tjk7H055Jk0lGBjbgDnfrvqjhXh9t2xLMSCjZVcw9Rb1V6sVNXO0th3jgeO7zllWPTNRil3JW94TnQ==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    peerDependencies:
+      '@types/eslint': '>=8.0.0'
+      eslint: '>=8.0.0'
+      eslint-config-prettier: '>= 7.0.0 <10.0.0 || >=10.1.0'
+      prettier: '>=3.0.0'
+    peerDependenciesMeta:
+      '@types/eslint':
+        optional: true
+      eslint-config-prettier:
         optional: true
 
   eslint-plugin-react-hooks@4.6.2:
@@ -4364,6 +4394,9 @@ packages:
 
   fast-deep-equal@3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
+
+  fast-diff@1.3.0:
+    resolution: {integrity: sha512-VxPP4NqbUjj6MaAOafWeUn2cXWLcCtljklUtZf0Ind4XQ+QPtmA0b18zZy0jIQx+ExRVCR/ZQpBmik5lXshNsw==}
 
   fast-glob@3.3.3:
     resolution: {integrity: sha512-7MptL8U0cqcFdzIzwOTHoilX9x5BrNqye7Z/LuC7kCMRio1EMSyqRK3BEAUD7sXRq4iT4AzTVuZdhgQ2TCvYLg==}
@@ -6885,6 +6918,10 @@ packages:
     resolution: {integrity: sha512-ravE6m9Atw9Z/jjttRUZ+clIXogdghyZAuWJ3qEzjT+jI/dL1ifAqhZeC5VHzQp1MSt1+jxKkFNemj/iO7tVUA==}
     engines: {node: '>=4'}
 
+  prettier-linter-helpers@1.0.0:
+    resolution: {integrity: sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w==}
+    engines: {node: '>=6.0.0'}
+
   prettier@2.8.8:
     resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
     engines: {node: '>=10.13.0'}
@@ -7794,6 +7831,10 @@ packages:
 
   symbol-tree@3.2.4:
     resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==}
+
+  synckit@0.11.1:
+    resolution: {integrity: sha512-fWZqNBZNNFp/7mTUy1fSsydhKsAKJ+u90Nk7kOK5Gcq9vObaqLBLjWFDBkyVU9Vvc6Y71VbOevMuGhqv02bT+Q==}
+    engines: {node: ^14.18.0 || >=16.0.0}
 
   table@6.9.0:
     resolution: {integrity: sha512-9kY+CygyYM6j02t5YFHbNz2FN5QmYGv9zAjVp4lCDjlCw7amdckXlEt/bjMhUIfj4ThGRE4gCUH5+yGnNuPo5A==}
@@ -10029,6 +10070,8 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
+  '@pkgr/core@0.2.0': {}
+
   '@pmmmwh/react-refresh-webpack-plugin@0.5.16(react-refresh@0.11.0)(type-fest@2.19.0)(webpack-dev-server@4.11.1(webpack@5.78.0(@swc/core@1.3.96(@swc/helpers@0.5.15))))(webpack@5.78.0(@swc/core@1.3.96(@swc/helpers@0.5.15)))':
     dependencies:
       ansi-html: 0.0.9
@@ -10757,7 +10800,7 @@ snapshots:
       - supports-color
       - vue
 
-  '@tarojs/webpack5-runner@3.6.35(@babel/core@7.26.10)(@swc/core@1.3.96(@swc/helpers@0.5.15))(@swc/helpers@0.5.15)(@tarojs/components@3.6.35(@tarojs/helper@3.6.35(@swc/helpers@0.5.15))(@tarojs/runtime@3.6.35(@tarojs/shared@3.6.35))(@tarojs/shared@3.6.35)(@types/react@18.3.20)(postcss@8.5.3)(react@18.3.1))(@tarojs/runtime@3.6.35(@tarojs/shared@3.6.35))(@tarojs/shared@3.6.35)(@tarojs/taro@3.6.35(@tarojs/helper@3.6.35(@swc/helpers@0.5.15))(@tarojs/runtime@3.6.35(@tarojs/shared@3.6.35))(@types/react@18.3.20)(postcss@8.5.3))(@types/react@18.3.20)(@vue/compiler-sfc@3.5.13)(postcss@8.5.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.2)(webpack@5.78.0(@swc/core@1.3.96(@swc/helpers@0.5.15)))':
+  '@tarojs/webpack5-runner@3.6.35(@babel/core@7.26.10)(@swc/core@1.3.96(@swc/helpers@0.5.15))(@swc/helpers@0.5.15)(@tarojs/components@3.6.35(@tarojs/helper@3.6.35(@swc/helpers@0.5.15))(@tarojs/runtime@3.6.35(@tarojs/shared@3.6.35))(@tarojs/shared@3.6.35)(@types/react@18.3.20)(postcss@8.5.3)(react@18.3.1))(@tarojs/runtime@3.6.35(@tarojs/shared@3.6.35))(@tarojs/shared@3.6.35)(@tarojs/taro@3.6.35(@tarojs/helper@3.6.35(@swc/helpers@0.5.15))(@tarojs/runtime@3.6.35(@tarojs/shared@3.6.35))(@types/react@18.3.20)(postcss@8.5.3))(@types/react@18.3.20)(@vue/compiler-sfc@3.5.13)(postcss@8.5.3)(prettier@2.8.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.2)(webpack@5.78.0(@swc/core@1.3.96(@swc/helpers@0.5.15)))':
     dependencies:
       '@parcel/css': 1.14.0
       '@tarojs/helper': 3.6.35(@swc/helpers@0.5.15)
@@ -10816,7 +10859,7 @@ snapshots:
       terser-webpack-plugin: 5.3.14(@swc/core@1.3.96(@swc/helpers@0.5.15))(esbuild@0.19.12)(webpack@5.78.0(@swc/core@1.3.96(@swc/helpers@0.5.15)))
       url-loader: 4.1.0(file-loader@6.0.0(webpack@5.78.0(@swc/core@1.3.96(@swc/helpers@0.5.15))))(webpack@5.78.0(@swc/core@1.3.96(@swc/helpers@0.5.15)))
       vm2: 3.9.19
-      vue-loader: 15.11.1(@vue/compiler-sfc@3.5.13)(css-loader@6.11.0(webpack@5.78.0(@swc/core@1.3.96(@swc/helpers@0.5.15))))(lodash@4.17.21)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(webpack@5.78.0(@swc/core@1.3.96(@swc/helpers@0.5.15)))
+      vue-loader: 15.11.1(@vue/compiler-sfc@3.5.13)(css-loader@6.11.0(webpack@5.78.0(@swc/core@1.3.96(@swc/helpers@0.5.15))))(lodash@4.17.21)(prettier@2.8.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(webpack@5.78.0(@swc/core@1.3.96(@swc/helpers@0.5.15)))
       webpack: 5.78.0(@swc/core@1.3.96(@swc/helpers@0.5.15))
       webpack-chain: 6.5.1
       webpack-dev-server: 4.11.1(webpack@5.78.0(@swc/core@1.3.96(@swc/helpers@0.5.15)))
@@ -13431,6 +13474,10 @@ snapshots:
     optionalDependencies:
       source-map: 0.6.1
 
+  eslint-config-prettier@10.1.1(eslint@8.57.1):
+    dependencies:
+      eslint: 8.57.1
+
   eslint-config-taro@3.6.35(@babel/core@7.26.10)(eslint@8.57.1)(typescript@5.8.2):
     dependencies:
       '@babel/eslint-parser': 7.27.0(@babel/core@7.26.10)(eslint@8.57.1)
@@ -13487,6 +13534,16 @@ snapshots:
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
       - supports-color
+
+  eslint-plugin-prettier@5.2.6(@types/eslint@9.6.1)(eslint-config-prettier@10.1.1(eslint@8.57.1))(eslint@8.57.1)(prettier@2.8.8):
+    dependencies:
+      eslint: 8.57.1
+      prettier: 2.8.8
+      prettier-linter-helpers: 1.0.0
+      synckit: 0.11.1
+    optionalDependencies:
+      '@types/eslint': 9.6.1
+      eslint-config-prettier: 10.1.1(eslint@8.57.1)
 
   eslint-plugin-react-hooks@4.6.2(eslint@8.57.1):
     dependencies:
@@ -13749,6 +13806,8 @@ snapshots:
   extsprintf@1.3.0: {}
 
   fast-deep-equal@3.1.3: {}
+
+  fast-diff@1.3.0: {}
 
   fast-glob@3.3.3:
     dependencies:
@@ -16663,8 +16722,11 @@ snapshots:
 
   prepend-http@2.0.0: {}
 
-  prettier@2.8.8:
-    optional: true
+  prettier-linter-helpers@1.0.0:
+    dependencies:
+      fast-diff: 1.3.0
+
+  prettier@2.8.8: {}
 
   pretty-bytes@5.6.0: {}
 
@@ -17790,6 +17852,11 @@ snapshots:
 
   symbol-tree@3.2.4: {}
 
+  synckit@0.11.1:
+    dependencies:
+      '@pkgr/core': 0.2.0
+      tslib: 2.8.1
+
   table@6.9.0:
     dependencies:
       ajv: 8.17.1
@@ -18345,7 +18412,7 @@ snapshots:
 
   vue-hot-reload-api@2.3.4: {}
 
-  vue-loader@15.11.1(@vue/compiler-sfc@3.5.13)(css-loader@6.11.0(webpack@5.78.0(@swc/core@1.3.96(@swc/helpers@0.5.15))))(lodash@4.17.21)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(webpack@5.78.0(@swc/core@1.3.96(@swc/helpers@0.5.15))):
+  vue-loader@15.11.1(@vue/compiler-sfc@3.5.13)(css-loader@6.11.0(webpack@5.78.0(@swc/core@1.3.96(@swc/helpers@0.5.15))))(lodash@4.17.21)(prettier@2.8.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(webpack@5.78.0(@swc/core@1.3.96(@swc/helpers@0.5.15))):
     dependencies:
       '@vue/component-compiler-utils': 3.3.0(lodash@4.17.21)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       css-loader: 6.11.0(webpack@5.78.0(@swc/core@1.3.96(@swc/helpers@0.5.15)))
@@ -18356,6 +18423,7 @@ snapshots:
       webpack: 5.78.0(@swc/core@1.3.96(@swc/helpers@0.5.15))
     optionalDependencies:
       '@vue/compiler-sfc': 3.5.13
+      prettier: 2.8.8
     transitivePeerDependencies:
       - arc-templates
       - atpl

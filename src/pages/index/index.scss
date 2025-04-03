@@ -129,16 +129,21 @@
     bottom: 20px;
     left: 40px;
     right: 40px;
-    background: #fff;
     box-sizing: border-box;
     box-shadow: $shadow;
-    border-radius: 100px;
+
     .amount {
       color: $color-danger;
       font-size: $font-size-large;
     }
     .footer-action {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
       padding-left: 30px;
+      border-radius: 100px;
+      background: #fff;
       &__img {
         width: 80px !important;
         height: 80px !important;
@@ -149,6 +154,51 @@
         border-radius: 0 100px 100px 0;
         background-color: $color-primary;
         color: #fff;
+      }
+      z-index: 9999;
+    }
+    .footer-car {
+      position: absolute;
+      bottom: 60px;
+      left: 0;
+      right: 0;
+      background-color: #fff;
+      font-size: $font-size-medium;
+      overflow: hidden;
+      box-shadow: $shadow;
+      border-radius: 20px 20px 0 0;
+      padding: 20px 0;
+      padding-bottom: 80px;
+      .car-header {
+        padding: 0 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid $color-border;
+        &__clear {
+          font-size: $font-size-xsmall;
+          color: $color-text-secondary;
+        }
+      }
+      .car-content {
+        max-height: 200px;
+        .car-item {
+          margin: 20px;
+          &__img {
+            width: 80px !important;
+            height: 80px !important;
+            margin-right: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+          }
+          .nut-inputnumber,
+          .nut-inputnumber-input {
+            background-color: #fff;
+          }
+          .nut-inputnumber-minus,
+          .nut-inputnumber-add {
+            border-radius: 50%;
+            background-color: $color-background;
+          }
+        }
       }
     }
   }
