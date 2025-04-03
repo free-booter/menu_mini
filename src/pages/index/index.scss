@@ -45,7 +45,7 @@
     }
   }
   .nut-tabpane {
-    padding-top: 10px;
+    padding: 10px 15px;
   }
   .pane-content {
     .pane-header {
@@ -87,37 +87,23 @@
         }
         .item-action {
           position: relative;
-          width: 40px;
-          height: 40px;
           align-self: flex-end;
           margin-left: auto;
-          .nut-badge {
-            margin-right: 0 !important;
-          }
-          .nut-badge-number {
-            // background: #c0a176;
-            background: $color-price;
-          }
-          .item-add {
-            background-color: $color-primary;
-            color: #fff;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-          }
-          .ball-box {
-            position: absolute;
-            right: 0;
-            width: 30px;
-            height: 30px;
-            // animation: moveX 1s linear infinite;
-            .ball {
-              position: absolute;
-              width: 30px;
-              height: 30px;
-              background-color: $color-primary;
-              border-radius: 50%;
-              // animation: moveY 1s cubic-bezier(0.55, 0, 0.85, 0.36) infinite;
+          .item-section {
+            border-radius: 100px;
+            color: $color-text-placeholder;
+            font-size: $font-size-xsmall;
+            border: 1px solid $color-border;
+            overflow: hidden;
+            background-color: $color-background;
+            box-shadow: $shadow-heavy-light;
+            .section-item {
+              padding: 10px 15px;
+              &.active {
+                color: #fff;
+                border-radius: 100px;
+                background-color: $color-primary;
+              }
             }
           }
         }
@@ -191,6 +177,15 @@
           .nut-inputnumber-add {
             border-radius: 50%;
             background-color: $color-background;
+          }
+          .section-item {
+            font-size: $font-size-xsmall;
+            padding: 10px 15px;
+            &.active {
+              color: #fff;
+              border-radius: 100px;
+              background-color: $color-primary;
+            }
           }
         }
       }

@@ -28,13 +28,16 @@ type MenuBtnRect = {
 type CartItem = {
   id: number;
   name: string;
-  price: number;
-  count: number;
+  rate: number;
+  saleNum: number;
   image: string;
+  actived: boolean;
 };
 
 export default function Index() {
-  const [menuBtnInfo, setMenuBtnInfo] = useState<MenuBtnRect>({} as MenuBtnRect);
+  const [menuBtnInfo, setMenuBtnInfo] = useState<MenuBtnRect>(
+    {} as MenuBtnRect
+  );
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [showCart, setShowCart] = useState(false);
   const [showFooterCar, setShowFooterCar] = useState(false);
@@ -49,27 +52,33 @@ export default function Index() {
     "欢迎使用电子菜单，点击查看菜品详情，长按可添加到购物车，点击购物车可查看已选菜品。"
   );
 
+  const [dataList, setDataList] = useState([
+    {
+      id: 1,
+      name: "辣椒炒蛋",
+      image:
+        "https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png",
+      saleNum: 1,
+      rate: 4,
+      actived: false,
+    },
+  ]);
+
   // 购物车操作
   const handleAddToCart = (item: CartItem) => {
     setShowCart(true);
+    item.actived = true;
     const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
-    if (existingItem) {
-      setCartItems(
-        cartItems.map((cartItem) =>
-          cartItem.id === item.id
-            ? { ...cartItem, count: cartItem.count + 1 }
-            : cartItem
-        )
-      );
-    } else {
-      setCartItems([...cartItems, { ...item, count: 1 }]);
-    }
+    if (existingItem) return;
+    setCartItems([...cartItems, item]);
   };
 
-  const handleRemoveFromCart = (itemId: number) => {
-    setCartItems(cartItems.filter((item) => item.id !== itemId));
+  const handleRemoveFromCart = (item: CartItem) => {
+    if (!item.actived) return;
+    item.actived = false;
+    setCartItems(cartItems.filter((item) => item.id !== item.id));
     if (cartItems.length === 1) {
-      handleClearCar()
+      handleClearCar();
     }
   };
 
@@ -113,18 +122,19 @@ export default function Index() {
     }
   };
 
-  const [footerSlide,setFooterSlide] = useState(false)
+  const [footerSlide, setFooterSlide] = useState(false);
   const handleClearCar = () => {
     setIsSlidingDown(true);
     setFooterSlide(true);
-      setTimeout(() => {
-        setShowFooterCar(false);
-        setIsSlidingDown(false);
-        setFooterSlide(false);
-        setShowCart(false);
-        setCartItems([]);
-      }, 300);
-  }
+    setTimeout(() => {
+      setShowFooterCar(false);
+      setIsSlidingDown(false);
+      setFooterSlide(false);
+      setShowCart(false);
+      setCartItems([]);
+      setDataList(dataList.map((item) => ({ ...item, actived: false })));
+    }, 300);
+  };
 
   return (
     <View
@@ -154,32 +164,46 @@ export default function Index() {
               <Text className="pane-header__tip">一些提示文案</Text>
             </View>
             <View className="pane-list">
-              <View className="pane-item">
-                <Image
-                  className="item-img"
-                  src="https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png"
-                />
-                <View className="item-info">
-                  <View className="item-title fw-600">辣椒炒蛋</View>
-                  <View className="item-sales">销量：1</View>
-                  <View className="item-rate">
-                    <Rate defaultValue={3} />
+              {dataList.map((item) => (
+                <View className="pane-item" key={item.id}>
+                  <Image
+                    className="item-img"
+                    src={item.image}
+                    onClick={() =>
+                      Taro.navigateTo({
+                        url: "/pages/index/components/detail/index",
+                      })
+                    }
+                  />
+                  <View className="item-info">
+                    <View className="item-title fw-600">{item.name}</View>
+                    <View className="item-sales">销量：{item.saleNum}</View>
+                    <View className="item-rate">
+                      <Rate defaultValue={item.rate} />
+                    </View>
+                  </View>
+                  <View className="item-action">
+                    <View className="item-section flex items-center justify-between">
+                      <View
+                        className={`section-item ${
+                          !item.actived ? "active" : ""
+                        }`}
+                        onClick={() => handleRemoveFromCart(item)}
+                      >
+                        达咩
+                      </View>
+                      <View
+                        className={`section-item ${
+                          item.actived ? "active" : ""
+                        }`}
+                        onClick={() => handleAddToCart(item)}
+                      >
+                        想吃
+                      </View>
+                    </View>
                   </View>
                 </View>
-                <View className="item-action">
-                  <Badge value={cartItems.find(item => item.id === 1)?.count || 0}>
-                    <View className="item-add" onClick={() => handleAddToCart({
-                      id: 1,
-                      name: "辣椒炒蛋",
-                      price: 18,
-                      count: 1,
-                      image: "https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png"
-                    })}>
-                      <Add />
-                    </View>
-                  </Badge>
-                </View>
-              </View>
+              ))}
             </View>
           </View>
         </Tabs.TabPane>
@@ -190,12 +214,20 @@ export default function Index() {
       </Tabs>
 
       {showCart && (
-        <View className={`home-footer ${footerSlide ? 'slide-down' : ''}`}>
+        <View className={`home-footer ${footerSlide ? "slide-down" : ""}`}>
           {showFooterCar && (
-            <View className={`footer-car ${isSlidingDown ? 'slide-down' : ''}`} onClick={(e) => e.stopPropagation()}>
+            <View
+              className={`footer-car ${isSlidingDown ? "slide-down" : ""}`}
+              onClick={(e) => e.stopPropagation()}
+            >
               <View className="car-header flex items-center justify-between">
-                <View className="car-header__tit">已选购（{cartItems.reduce((sum, item) => sum + item.count, 0)}件）</View>
-                <View className="car-header__clear flex items-center" onClick={handleClearCar}>
+                <View className="car-header__tit">
+                  已选购({cartItems.length})
+                </View>
+                <View
+                  className="car-header__clear flex items-center"
+                  onClick={handleClearCar}
+                >
                   <Del size={16} style={{ marginRight: "10px" }} />
                   清空购物车
                 </View>
@@ -203,21 +235,21 @@ export default function Index() {
               <View>
                 <ScrollView className="car-content" scrollY scrollWithAnimation>
                   {cartItems.map((item) => (
-                    <View key={item.id} className="car-item flex items-center justify-between">
+                    <View
+                      key={item.id}
+                      className="car-item flex items-center justify-between"
+                    >
                       <View className="car-item__info flex items-center">
-                        <Image
-                          className="car-item__img"
-                          src={item.image}
-                        />
+                        <Image className="car-item__img" src={item.image} />
                         <View className="car-item__title">{item.name}</View>
                       </View>
                       <View className="car-item__action flex items-center">
-                        <InputNumber
-                          value={item.count}
-                          min={0}
-                          max={99}
-                          onChange={(value) => handleUpdateCount(item.id, Number(value))}
-                        />
+                        <View
+                          className="section-item active"
+                          onClick={() => handleRemoveFromCart(item)}
+                        >
+                          达咩
+                        </View>
                       </View>
                     </View>
                   ))}
@@ -225,14 +257,12 @@ export default function Index() {
               </View>
             </View>
           )}
-          <View className="footer-action flex items-center justify-between" >
+          <View className="footer-action flex items-center justify-between">
             <View className="flex items-center" onClick={handleToggleFooterCar}>
               <Image className="footer-action__img" src={DishImg}></Image>
-              <View>
-                预计支付<Text className="amount">¥{totalPrice.toFixed(2)}</Text>
-              </View>
+              <View>已选购{cartItems.length}个</View>
             </View>
-            <View className="footer-action__btn">去结算</View>
+            <View className="footer-action__btn">选好了</View>
           </View>
         </View>
       )}
