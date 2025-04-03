@@ -1,0 +1,93 @@
+.detail-page {
+  width: 100vw;
+  height: 100vh;
+  padding-bottom: 150px;
+  .detail-cover {
+    position: relative;
+    width: 100%;
+    height: 600px !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: inherit; // 使用父元素的背景
+      background-size: cover;
+      background-position: center;
+      // filter: blur(10px) brightness(0.8); /* 模糊和亮度调整 */
+      z-index: 1;
+    }
+  }
+  .detail-content {
+    padding: 20px;
+    .detail-title {
+      margin-bottom: 10px;
+      font-size: $font-size-xlarge;
+      font-weight: 700;
+    }
+    .detail-intro {
+      color: $color-text-placeholder;
+      font-size: $font-size-small;
+      font-weight: 400;
+      margin: 10px 0;
+    }
+    .detail-section {
+      margin-bottom: 20px;
+      color: $color-text-placeholder;
+      font-size: $font-size-medium;
+      .title {
+        position: relative;
+        color: $color-text-primary;
+        font-size: $font-size-large;
+        margin-bottom: 10px;
+        &::after {
+          position: absolute;
+          left: -10px;
+          top: 0;
+          bottom: 50%;
+          transform: translateY(50%);
+          content: "";
+          display: block;
+          width: 6px;
+          border-radius: 10px;
+          background-color: $color-primary;
+        }
+      }
+      .detail-step {
+        margin-bottom: 10px;
+      }
+      .detail-link {
+        .link-title {
+          color: $color-text-primary;
+        }
+      }
+    }
+  }
+  .detail-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 120px;
+    border-top: $color-border solid 1px;
+    background-color: #fff;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    box-shadow: $shadow-light;
+    .footer-btn {
+      padding: 20px 30px;
+      border-radius: 50px;
+      background-color: $color-primary;
+      color: #fff;
+      font-size: $font-size-large;
+    }
+  }
+}

@@ -81,24 +81,6 @@ export default function Index() {
       handleClearCar();
     }
   };
-
-  const handleUpdateCount = (itemId: number, count: number) => {
-    if (count === 0) {
-      handleRemoveFromCart(itemId);
-    } else {
-      setCartItems(
-        cartItems.map((item) =>
-          item.id === itemId ? { ...item, count } : item
-        )
-      );
-    }
-  };
-
-  const totalPrice = cartItems.reduce(
-    (sum, item) => sum + item.price * item.count,
-    0
-  );
-
   const handleToggleFooterCar = (e: any) => {
     e.stopPropagation();
     if (showFooterCar) {
@@ -190,7 +172,7 @@ export default function Index() {
                         }`}
                         onClick={() => handleRemoveFromCart(item)}
                       >
-                        达咩
+                        下次
                       </View>
                       <View
                         className={`section-item ${
@@ -198,7 +180,7 @@ export default function Index() {
                         }`}
                         onClick={() => handleAddToCart(item)}
                       >
-                        想吃
+                        一起尝
                       </View>
                     </View>
                   </View>
@@ -248,7 +230,7 @@ export default function Index() {
                           className="section-item active"
                           onClick={() => handleRemoveFromCart(item)}
                         >
-                          达咩
+                          下次
                         </View>
                       </View>
                     </View>
